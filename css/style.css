@@ -1,7 +1,32 @@
 body{
-  background-color: rgb(12,27,50);
+  background-color: rgb(35,35,50);
 }
 H1{
   text-align: center;
   color: silver;
+}
+.map{
+  padding-top: 15px;
+  background-color: blue;
+  position:relative;
+  height: 700px;
+  width: 700px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 1080px;
+  height: 1080px;
+
+}
+.space {
+  height: 23%;
+  width: 23%;
+  background-color: green;
+  border-radius: 50%;
 }
