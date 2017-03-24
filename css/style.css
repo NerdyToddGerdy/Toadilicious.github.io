@@ -7,10 +7,11 @@ H1{
 }
 .map{
   padding-top: 15px;
-  background-color: blue;
+  background-color: darkblue;
   position:relative;
   height: 700px;
   width: 700px;
+  border-radius: 5%;
   display: flex;
   justify-content: space-around;
   flex-direction: row;
@@ -20,13 +21,19 @@ H1{
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 1080px;
-  height: 1080px;
+  width: 900px;
+  height: 900px;
 
 }
 .space {
+  line-height: 23%;
   height: 23%;
   width: 23%;
   background-color: green;
   border-radius: 50%;
+  box-shadow: 5px 5px 15px;
+  text-align: center;
+}
+#player{
+  background-color: blue;
 }
