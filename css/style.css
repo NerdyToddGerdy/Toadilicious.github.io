@@ -53,5 +53,22 @@ H1{
   text-align: center;
   margin: auto;
   cursor: pointer;
-
+}
+unclicked-button{
+  height: 25px;
+  width: 100px;
+  background-color: green;
+  border-radius: 10px;
+  text-align: center;
+  margin: auto;
+  cursor: pointer;
+}
+clicked-button{
+  height: 25px;
+  width: 100px;
+  background-color: red;
+  border-radius: 10px;
+  text-align: center;
+  margin: auto;
+  cursor: pointer;
 }
