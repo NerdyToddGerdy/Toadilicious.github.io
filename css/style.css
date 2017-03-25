@@ -16,24 +16,40 @@ H1{
   justify-content: space-around;
   flex-direction: row;
   flex-wrap: wrap;
+  margin:auto;
+  overflow: hidden;
 }
 .container {
-  display: flex;
+  display: flex-inline;
   justify-content: center;
   flex-direction: column;
   width: 900px;
   height: 900px;
 
+
 }
 .space {
-  line-height: 23%;
+  line-height: 700%;
   height: 23%;
   width: 23%;
   background-color: green;
-  border-radius: 50%;
+  border-radius: 20%;
   box-shadow: 5px 5px 15px;
   text-align: center;
+  cursor:pointer;
 }
-.player{
+.player1{
   background-color: blue;
+}
+.player2{
+  background-color: purple;
+}
+.button {
+  height: 25px;
+  width: 100px;
+  background-color: Azure;
+  border-radius: 10px;
+  text-align: center;
+  margin: auto;
+  cursor: pointer;
 }
