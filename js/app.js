@@ -24,10 +24,18 @@ var eventHandler = {
   //What happens when space is clicked
   clickedSpace : function(){
     console.log("test the click");
-    $(this).css({'border': 'rgba(255,255,255,.8) solid 4px'})
+    $(this).css({'border': 'rgba(255,255,255,1) solid 5px'})
     var thisLocation = $(this).index()
-    // if()// to highlight surrounding spaces(look at notepad)
-    console.log(thisLocation);
+    var upLocation = thisLocation-3;
+    var rightLocation = thisLocation+2;
+    var downLocation = thisLocation+5;
+    var leftLocation = thisLocation;
+
+    $('#space-'+upLocation).css({'border': 'rgba(255,255,255,.7) solid 4px'})
+    $('#space-'+rightLocation).css({'border': 'rgba(255,255,255,.7) solid 4px'})
+    $('#space-'+downLocation).css({'border': 'rgba(255,255,255,.7) solid 4px'})
+    $('#space-'+leftLocation).css({'border': 'rgba(255,255,255,.7) solid 4px'})
+
   },
   //What happens when the button is clickedSpace
   clickedButton : function(){
