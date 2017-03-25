@@ -12,17 +12,16 @@ var $button = $('.button');
 //====================================================
 //                EVENT HANDLER
 //====================================================
-
-//What happens when space is clicked
-var clickedSpace = function(){
-  console.log("test the click");
+var eventHandler = {
+  //What happens when space is clicked
+  clickedSpace : function(){
+    console.log("test the click");
+  },
+  //What happens when the button is clickedSpace
+  clickedButton : function(){
+    console.log("test the button");
+  }
 }
-
-//What happens when the button is clickedSpace
-var clickedButton = function(){
-  console.log("test the button");
-}
-
 //====================================================
 //                EVENT LISTENER
 //====================================================
@@ -33,7 +32,7 @@ $spaces.on('click', clickedSpace);
 //Turns the button Div into a button
 $button.on('click', clickedButton)
 
-}); //End of Window onload
+}); //End of Window onload**************************
 
 
 
@@ -44,17 +43,30 @@ $button.on('click', clickedButton)
 //====================================================
 
 /////////////Objects
+
+
 ////Player 1
-  //Name
-  //Color
-  //Number of controlled spaces
-  //Number of soldiers
+//Name
+//Color
+//Number of controlled spaces
+//Number of soldiers
+var playerOne = {
+  name:'',
+  playerColor:'',
+  numberOfControlledSpaces:1,
+  numberOfSoldiers:2
+}
 
 ////Player 2
   //Name
   //Color
   //Number of controlled spaces
   //Number of soldiers
+  var playerTwo = {
+    name:'',
+    playerColor:'',
+    numberOfControlledSpaces:1,
+    numberOfSoldiers:2
 
 ////Game
   //has somebody won?
@@ -63,6 +75,23 @@ $button.on('click', clickedButton)
   //hire soldiers phase
   //button
   //Round Number
+var game = {
+  payersTurn:'Player One',
+  gameRound:0,
+  checkForWinner: function(){
+
+  },
+  attackPhase: function(){
+
+  },
+  hirePhase: function(){
+
+  }
+
+
+}
+
+
 
 ////Map
   // How to color change
