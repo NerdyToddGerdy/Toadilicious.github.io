@@ -26,7 +26,7 @@ var eventHandler = {
     console.log("test the click");
     $(this).css({'border': 'rgba(255,255,255,.8) solid 4px'})
     var thisLocation = $(this).index()
-    if()// to highlight surrounding spaces(look at notepad)
+    // if()// to highlight surrounding spaces(look at notepad)
     console.log(thisLocation);
   },
   //What happens when the button is clickedSpace
