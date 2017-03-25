@@ -37,6 +37,7 @@ H1{
   box-shadow: 5px 5px 15px;
   text-align: center;
   cursor:pointer;
+  overflow: hidden;
 }
 .player1{
   background-color: blue;
@@ -52,4 +53,5 @@ H1{
   text-align: center;
   margin: auto;
   cursor: pointer;
+
 }
