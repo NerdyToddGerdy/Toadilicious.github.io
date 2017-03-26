@@ -38,6 +38,7 @@ H1{
   text-align: center;
   cursor:pointer;
   overflow: hidden;
+  box-sizing: border-box;
 }
 .player1{
   background-color: blue;
@@ -54,19 +55,20 @@ H1{
   margin: auto;
   cursor: pointer;
 }
-unclicked-button{
+unclicked-space{
   height: 25px;
   width: 100px;
   background-color: green;
   border-radius: 10px;
+  /*border: rgba(255,255,255,0) solid 5px;*/
   text-align: center;
   margin: auto;
   cursor: pointer;
 }
-clicked-button{
+clicked-space{
+  /*border: rgba(255,255,255,1) solid 5px;*/
   height: 25px;
   width: 100px;
-  background-color: red;
   border-radius: 10px;
   text-align: center;
   margin: auto;
