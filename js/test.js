@@ -30,3 +30,21 @@ $button.on('click',changeBackground)
 
 
 })
+
+
+
+
+
+
+
+if ($currentClass == 'space unclicked-space'){
+  $(this).removeClass('unclicked-space');
+  $(this).addClass('clicked-space')
+  $(this).css({'border': 'rgba(255,255,255,1) solid 5px'})
+} else {
+  var secondClick = function(){
+    console.log('testing the secondClick');
+  }
+
+  $spaces.on('click', eventHandler.secondClick);
+}
