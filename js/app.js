@@ -10,26 +10,38 @@ $(function(){
   var $player1ControlledSpaces = $('.player1');
   var $player2ControlledSpaces = $('.player2');
   var counter = 0;
+
+
   // add controlled amount to player1
   player1.$numberOfControlledSpaces = $player1ControlledSpaces.length;
-  // console.log(player1.$numberOfControlledSpaces);
 
   // add controlled amount to player2
   player2.$numberOfControlledSpaces = $player2ControlledSpaces.length;
-  // console.log(player2.$numberOfControlledSpaces);
+
+
+
+
+
+
   //====================================================
   //                EVENT HANDLER
   //====================================================
   var eventHandler = {
+    $currentClass : $(this).attr('class'),
+    // console.log("check the class: " + $currentClass);
+
     //What happens when space is clicked on attack phase
+    testingThis: function() {
+
+      // console.log($(this).attr('class') + ' also');
+    },
     clickedSpace : function(){
-      var $currentClass = $(this).attr('class');
-      // console.log("check the class: " + $currentClass);
-      var $thisLocation = $(this).index()
+      var $thisLocation = $(this).index();
       var $upLocation = $thisLocation-4;
       var $rightLocation = $thisLocation+1;
       var $downLocation = $thisLocation+4;
       var $leftLocation = $thisLocation-1;
+
 
       var $upperCSS = $('#space-'+$upLocation).css({'border': 'rgba(255,255,255,.7) solid 4px'});
       var $rightCSS = $('#space-'+$rightLocation).css({'border': 'rgba(255,255,255,.7) solid 4px'});
@@ -39,10 +51,10 @@ $(function(){
 
       // UNCLICK STEP
       if ($(this).hasClass('clicked-space')) {
-        $(this).removeClass('clicked-space')
-        $(this).addClass('unclicked-space')
-        $('.space').css({'border': 'rgba(255,255,255,0) solid 5px'})
-        // console.log($(this).attr('class'));
+          $(this).removeClass('clicked-space')
+          $(this).addClass('unclicked-space')
+          $('.space').css({'border': 'rgba(255,255,255,0) solid 5px'})
+          // console.log($(this).attr('class'));
 
       //CLICK STEP
       } else {
@@ -50,17 +62,20 @@ $(function(){
         $(this).addClass('clicked-space')
         $(this).css({'border': 'rgba(255,255,255,1) solid 5px'})
 
-        var $upperSelection = 'space-'+$upLocation;
-        var $rightSelection = 'space-'+$rightLocation;
-        var $downSelection = 'space-'+$downLocation;
-        var $leftSelection = 'space-'+$leftLocation;
+        console.log($thisLocation);
+        eventHandler.testingThis();
+
+
+        //used for dice game
+        var $upperSelection = 'space-'+this.$upLocation;
+        var $rightSelection = 'space-'+this.$rightLocation;
+        var $downSelection = 'space-'+this.$downLocation;
+        var $leftSelection = 'space-'+this.$leftLocation;
 
         console.log('I want to click these locations: ' + $upLocation + ', ' + $rightLocation + ', ' + $downLocation +', '+ $leftLocation);
-        // console.log($(this).attr('class') + ' also');
-
       }
 
-      //higlights nearby spaces.
+      // higlights nearby spaces.
       if ($thisLocation == 3) {
         // console.log("this is the top right corner box");
         $rightCSS.css({'border':'rgba(255,255,255,0'})
@@ -75,22 +90,39 @@ $(function(){
         $leftCSS.css({'border':'rgba(255,255,255,0'})
       }
 
-      $('#' + $upperSelection).on('click',function(){
-        // $('.space').css({'border':'rgba(255,255,255,0'})
-        $(this).addClass('selected-border')    // How do I get this to light up when I just told it to go dark.
-        var $thisText = $(this).text()
-        console.log("this text = " + $thisText);
-        // game.rollOfDice();
-      });
-      $('#' + $rightSelection).on('click',function(){
-        console.log('this is location # ' + $rightSelection);
-      });
-      $('#' + $downSelection).on('click',function(){
-        console.log('this is location # ' + $downSelection);
-      });
-      $('#' + $leftSelection).on('click',function(){
-        console.log('this is location # ' + $leftSelection);
-      });
+
+      //used for dice
+
+      // $('#' + $upperSelection).on('click',function(){
+      //   // $('.space').css({'border':'rgba(255,255,255,0'})
+      //   $(this).addClass('selected-border')    // How do I get this to light up when I just told it to go dark.
+      //   var $thisText = $(this).text()
+      //   console.log("this text = " + $thisText);
+      //   // game.rollOfDice();
+      // });
+      // $('#' + $rightSelection).on('click',function(){
+      //   // $('.space').css({'border':'rgba(255,255,255,0'})
+      //   $(this).addClass('selected-border')    // How do I get this to light up when I just told it to go dark.
+      //   var $thisText = $(this).text()
+      //   console.log('this is location # ' + $rightSelection);
+      // });
+      // $('#' + $downSelection).on('click',function(){
+      //   // $('.space').css({'border':'rgba(255,255,255,0'})
+      //   $(this).addClass('selected-border')    // How do I get this to light up when I just told it to go dark.
+      //   var $thisText = $(this).text()
+      //   console.log('this is location # ' + $downSelection);
+      // });
+      // $('#' + $leftSelection).on('click',function(){
+      //   // $('.space').css({'border':'rgba(255,255,255,0'})
+      //   $(this).addClass('selected-border')    // How do I get this to light up when I just told it to go dark.
+      //   var $thisText = $(this).text()
+      //   console.log('this is location # ' + $leftSelection);
+      // });
+
+
+
+
+
       // counter++,
       // console.log("counter: " + counter);
     },
@@ -132,6 +164,13 @@ $button.on('click', eventHandler.clickedButton)
 
 
 }); //End of Window onload**************************
+
+
+
+
+
+
+
 
 
 //====================================================
