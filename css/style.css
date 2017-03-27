@@ -55,22 +55,25 @@ H1{
   margin: auto;
   cursor: pointer;
 }
-unclicked-space{
-  height: 25px;
+.unclicked-space{
+  /*height: 25px;
   width: 100px;
   background-color: green;
-  border-radius: 10px;
-  /*border: rgba(255,255,255,0) solid 5px;*/
-  text-align: center;
+  border-radius: 10px;*/
+  border: rgba(255,255,255,0) solid 5px;
+  /*text-align: center;
   margin: auto;
-  cursor: pointer;
+  cursor: pointer;*/
 }
-clicked-space{
-  /*border: rgba(255,255,255,1) solid 5px;*/
-  height: 25px;
+.clicked-space{
+  border: rgba(255,255,255,1) solid 5px;
+  /*height: 25px;
   width: 100px;
   border-radius: 10px;
   text-align: center;
   margin: auto;
-  cursor: pointer;
+  cursor: pointer;*/
+}
+.selected-border{
+  border:rgba(255,0,0,1)}
 }
