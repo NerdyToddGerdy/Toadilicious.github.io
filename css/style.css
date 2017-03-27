@@ -28,6 +28,10 @@ H1{
 
 
 }
+
+
+
+
 .space {
   line-height: 700%;
   height: 23%;
@@ -40,12 +44,16 @@ H1{
   overflow: hidden;
   box-sizing: border-box;
 }
+.new-space{
+  border: rgba(255,255,255,.7) solid 4px;
+}
 .player1{
   background-color: blue;
 }
 .player2{
   background-color: purple;
 }
+
 .button {
   height: 25px;
   width: 100px;
@@ -56,17 +64,20 @@ H1{
   cursor: pointer;
 }
 .unclicked-space{
-  border: rgba(255,255,255,0) solid 5px;
+  border: ;
 }
 .clicked-space{
   border: rgba(255,255,255,1) solid 5px;
-  /*height: 25px;
-  width: 100px;
-  border-radius: 10px;
-  text-align: center;
-  margin: auto;
-  cursor: pointer;*/
 }
 .selected-border{
   border:rgba(255,0,0,1)}
 }
+.new-space{
+  border: rgba(255,255,255,.7) solid 4px;
+}
+
+
+
+
+
+/**/

@@ -21,8 +21,6 @@ $(function(){
 
 
 
-
-
   //====================================================
   //                EVENT HANDLER
   //====================================================
@@ -35,6 +33,23 @@ $(function(){
 
       // console.log($(this).attr('class') + ' also');
     },
+    resetSpace: function(){
+
+      $('.space').removeClass('clicked-space').removeClass('new-space')
+      console.log('classRemoved');
+      $('.space').off()
+      $('.space').on('click',eventHandler.clickedSpace);
+      clickedNumber1 = -1;
+      clickedNumber2 = -1;
+    },
+    newSpace: function(){
+      console.log("testing newSpace");
+      $(this).addClass('new-space');
+      clickedNumber2 = $(this).index();
+      clickedText2= $(this).text();
+      console.log('#2: ' + clickedNumber2);
+      game.attackPhase();
+    },
     clickedSpace : function(){
       var $thisLocation = $(this).index();
       var $upLocation = $thisLocation-4;
@@ -42,57 +57,72 @@ $(function(){
       var $downLocation = $thisLocation+4;
       var $leftLocation = $thisLocation-1;
 
+      $(this).addClass('clicked-space')
+      // console.log('classAdded');
+      $('.space').off();
+      $(this).on('click', eventHandler.resetSpace)
+      clickedNumber1 = $(this).index()
+      clickedText1 = $(this).text()
+      // console.log($('.space').index());
+      $('.space').not($(this)).on('click', eventHandler.newSpace)
+      console.log(clickedText1);
+      console.log('#1: ' + clickedNumber1);
 
-      var $upperCSS = $('#space-'+$upLocation).css({'border': 'rgba(255,255,255,.7) solid 4px'});
-      var $rightCSS = $('#space-'+$rightLocation).css({'border': 'rgba(255,255,255,.7) solid 4px'});
-      var $lowerCSS = $('#space-'+$downLocation).css({'border': 'rgba(255,255,255,.7) solid 4px'});
-      var $leftCSS = $('#space-'+$leftLocation).css({'border': 'rgba(255,255,255,.7) solid 4px'});
-      var $allSpaces = $('.space');
 
-      // UNCLICK STEP
-      if ($(this).hasClass('clicked-space')) {
-          $(this).removeClass('clicked-space')
-          $(this).addClass('unclicked-space')
-          $('.space').css({'border': 'rgba(255,255,255,0) solid 5px'})
-          // console.log($(this).attr('class'));
 
-      //CLICK STEP
-      } else {
-        $(this).removeClass('unclicked-space');
-        $(this).addClass('clicked-space')
-        $(this).css({'border': 'rgba(255,255,255,1) solid 5px'})
 
-        console.log($thisLocation);
-        eventHandler.testingThis();
+      // // UNCLICK STEP
+      // if ($(this).hasClass('clicked-space')) {
+      //     $(this).removeClass('clicked-space')
+      //     $(this).addClass('unclicked-space')
+      //     $('.space').css({'border': ''})
+      //     console.log('removing clicked status');
+      //
+      // //CLICK STEP
+      // } else {
+      //   // $('.space').css({'border':''})
+      //   $(this).removeClass('unclicked-space');
+      //   $(this).addClass('clicked-space')
+      //   $(this).css({'border': 'rgba(255,255,255,1) solid 5px'})
+      //
 
+
+        // eventHandler.testingThis();
 
         //used for dice game
-        var $upperSelection = 'space-'+this.$upLocation;
-        var $rightSelection = 'space-'+this.$rightLocation;
-        var $downSelection = 'space-'+this.$downLocation;
-        var $leftSelection = 'space-'+this.$leftLocation;
+        // var $upperSelection = 'space-'+this.$upLocation;
+        // var $rightSelection = 'space-'+this.$rightLocation;
+        // var $downSelection = 'space-'+this.$downLocation;
+        // var $leftSelection = 'space-'+this.$leftLocation;
 
-        console.log('I want to click these locations: ' + $upLocation + ', ' + $rightLocation + ', ' + $downLocation +', '+ $leftLocation);
-      }
+        // console.log('I want to click these locations: ' + $upLocation + ', ' + $rightLocation + ', ' + $downLocation +', '+ $leftLocation);
 
-      // higlights nearby spaces.
-      if ($thisLocation == 3) {
-        // console.log("this is the top right corner box");
-        $rightCSS.css({'border':'rgba(255,255,255,0'})
-      } else if ($thisLocation === 4 || $thisLocation ===8) {
-        // console.log("left side");
-        $leftCSS.css({'border':'rgba(255,255,255,0'})
-      } else if ($thisLocation === 7|| $thisLocation === 11){
-        // console.log("right side");
-        $rightCSS.css({'border':'rgba(255,255,255,0'})
-      }else if ($thisLocation === 12) {
-        // console.log("bottom left");
-        $leftCSS.css({'border':'rgba(255,255,255,0'})
-      }
+      // }
 
 
-      //used for dice
+      // var $upperCSS = $('#space-'+$upLocation).css({'border': 'rgba(255,255,255,.7) solid 4px'});
+      // var $rightCSS = $('#space-'+$rightLocation).css({'border': 'rgba(255,255,255,.7) solid 4px'});
+      // var $lowerCSS = $('#space-'+$downLocation).css({'border': 'rgba(255,255,255,.7) solid 4px'});
+      // var $leftCSS = $('#space-'+$leftLocation).css({'border': 'rgba(255,255,255,.7) solid 4px'});
+      // var $allSpaces = $('.space');
 
+      // // higlights nearby spaces.
+      // if ($thisLocation == 3) {
+      //   // console.log("this is the top right corner box");
+      //   $rightCSS.css({'border':'rgba(255,255,255,0'})
+      // } else if ($thisLocation === 4 || $thisLocation ===8) {
+      //   // console.log("left side");
+      //   $leftCSS.css({'border':'rgba(255,255,255,0'})
+      // } else if ($thisLocation === 7|| $thisLocation === 11){
+      //   // console.log("right side");
+      //   $rightCSS.css({'border':'rgba(255,255,255,0'})
+      // }else if ($thisLocation === 12) {
+      //   // console.log("bottom left");
+      //   $leftCSS.css({'border':'rgba(255,255,255,0'})
+      // }
+
+
+      // //used for dice
       // $('#' + $upperSelection).on('click',function(){
       //   // $('.space').css({'border':'rgba(255,255,255,0'})
       //   $(this).addClass('selected-border')    // How do I get this to light up when I just told it to go dark.
@@ -118,10 +148,10 @@ $(function(){
       //   var $thisText = $(this).text()
       //   console.log('this is location # ' + $leftSelection);
       // });
-
-
-
-
+      //
+      //
+      //
+      //
 
       // counter++,
       // console.log("counter: " + counter);
@@ -130,21 +160,20 @@ $(function(){
     // console.log($currentId);
     // console.log($thisLocation);
 
-    selectASpace:function(){
-      $('.space').css({'border':'rgba(255,255,255,0'})
-    }
+    // selectASpace:function(){
+    //   $('.space').css({'border':'rgba(255,255,255,0'})
+    // }
 
 
     //select only the surrounding buttons
     // if this location is selected ID, make up, right, down, left available for selection.
     // if($)
-  // },
-
+}
   //What happens when the button is clickedSpace
   // clickedButton:function(){
   //   console.log("test the button");
   // }
-}
+
 //====================================================
 //                EVENT LISTENER
 //====================================================
@@ -178,7 +207,10 @@ $button.on('click', eventHandler.clickedButton)
 //====================================================
 
 /////////////Objects
-
+var clickedNumber1 = -1
+var clickedNumber2 = -1
+var clickedText1 = '';
+var clickedText2 = '';
 
 ////Player 1
 //Name
@@ -233,8 +265,17 @@ var game = {
   },
   attackPhase: function(){
     //need to select a space, see the surrounding spaces,
+if (clickedText2 == 0) {
+  clickedText2 = Math.floor(clickedText1 /2);
+  console.log(clickedText2);
+  clickedText1 = clickedText1 - clickedText2;
+  console.log(clickedText1);
+  $('#space-'+clickedNumber2).addClass('player1');
+  $('#space-' + clickedNumber1).html('<h2>'+clickedText1+'</h2>');
+  $('#space-' + clickedNumber2).html('<h2>'+clickedText2+'</h2>');
+} else{
 
-    //compare dice to space.
+}  //compare dice to space.
     this.hirePhase();
   },
   rollOfDice: function(){
