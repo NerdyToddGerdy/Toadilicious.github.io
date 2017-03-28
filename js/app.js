@@ -105,6 +105,7 @@ var clickedNumber1 = -1
 var clickedNumber2 = -1
 var clickedText1 = '';
 var clickedText2 = '';
+var newSoldiers = 0
 
 ////Player 1
 //Name
@@ -139,7 +140,8 @@ var player2 = {
 //button
 //Round Number
 var game = {
-  currentPlayer:player1,
+  currentPlayer:'player1',
+  currentPlayerString:
   gameRound:0,
   currentPhase:'Attaack',
   // startOfGame: function(){
@@ -154,64 +156,99 @@ var game = {
     } else if (player2.$numberOfControlledSpaces == 16){
       alert('Congratulations ' + player2.name + "!!  You have won the game!")
     } else {
-      this.attackPhase();
+      return
     }
   },
+
   claimLand: function(){
+    console.log("CLAIMING LAND");
     clickedText2 = Math.floor(clickedText1 /2);
     console.log(clickedText2);
     clickedText1 = clickedText1 - clickedText2;
     console.log(clickedText1);
-    $('#space-'+clickedNumber2).addClass('player1');
+    $('#space-' + clickedNumber2).addClass('player1');
     $('#space-' + clickedNumber1).html('<h2>'+clickedText1+'</h2>');
     $('#space-' + clickedNumber2).html('<h2>'+clickedText2+'</h2>');
+    console.log('end of attack phase');
+    $('.clicked-space').off('click')
+    $('.new-space').off('click')
   },
 
   attackPhase: function(){
+    console.log('Starting Attack Phase');
     //need to select a space, see the surrounding spaces,
 if (clickedText2 == 0) {
-
   this.claimLand();
-
 } else{
   console.log(clickedText2 + "this is the second clicked");
 game.rollOfDice()
-}  //compare dice to space.
+}
+
   },
   rollOfDice: function(){
+    console.log("Beginning dice roll");
     var attackerTotal = 0;
     var defenderTotal = 0;
     var sixSidedDie = function(){
       return Math.ceil(Math.random() * 6)
     }
-    // var attackerRoll = function() {
     for (var i = 0; i < parseInt(clickedText1); i++) {
       attackerTotal = attackerTotal + sixSidedDie();
       console.log('doing the attack roll');
     }
     console.log("attackerRoll " +parseInt(attackerTotal));
-    // }
-    // var defenderRoll = function(){
       for (var i = 0; i < parseInt(clickedText2); i++) {
         defenderTotal = defenderTotal + sixSidedDie();
-      // }
     }
     console.log('defendertotal ' + defenderTotal);
-    //need the number of soldiers in each space.
     if (attackerTotal > defenderTotal) {
-      game.claimLand();
+    game.claimLand();
     }
-    console.log('end of attack phase');
-    $('.clicked-space').off('click')
-    $('.new-space').off('click')
     game.hirePhase();
   },
+  endOfRound: function(){
+    this.checkForWinner();
+    $('.new-space').removeClass('new-space');
+    $('.clicked-space').removeClass('clicked-space')
+
+    if (this.currentPlayer === player1){
+      this.currentPlayer = player2;
+      console.log('Player 2\'s turn');
+    } else {
+      this.currentPlayer = player1;
+    }
+  },
   hirePhase: function(){
+
     // Calculate the number of spaces currently owned.
-    console.log(this.currentPlayer.$numberOfControlledSpaces);
+    // console.log(this.currentPlayer.$numberOfControlledSpaces);
     // make newsoldiers = spaces owned.
-    var newSoldiers = this.currentPlayer.$numberOfControlledSpaces;
+    if (this.currentPlayer == 'player1') {
+     newSoldiers = player1.$numberOfControlledSpaces
+      console.log('player1');
+    } else {
+     newSoldiers = player2.$numberOfControlledSpaces;
+      console.log('player2');
+    }
+    // console.log("current Player # "+(this.currentPlayer));
+    // var newSoldiers = this.currentPlayer.$numberOfControlledSpaces;
+    // console.log(this.currentPlayer);
     console.log("new Soldiers = " + newSoldiers);
+
+    var $currentPlayer = $('.'+ this.currentPlayer)
+    $('.new-space').removeClass('new-space');
+    $('.clicked-space').removeClass('clicked-space');
+    $('.space').off('click')
+    // while (newSoldiers > 0) {
+    console.log($currentPlayer);
+      $currentPlayer.on('click',function(){
+    //     console.log("testing the add soldiers");
+    //     $(this).text(parseInt($(this).text())+1)
+      })
+
+      $('button').on('click', game.endOfRound)
+  },
+
     // while (newSoldiers > 0){// add a new soldier to clicked player's space
     //   if ($(this).hasClass(this.currentPlayer)){
     //     $(this)++;
@@ -220,19 +257,7 @@ game.rollOfDice()
     // }
     // newSoldiers--;
     // when newSoldiers is 0, go to game.endOfRound
-  },
-  endOfRound: function(){
-    this.checkForWinner();
-
-    $('.new-space').removeClass('new-space');
-    $('.clicked-space').removeClass('clicked-space')
-
-    if (this.currentPlayer === player1){
-      this.currentPlayer = player2;
-    } else {
-      this.currentPlayer = player1;
-    }
-  }
+  // }
 }
 ////Map
 // How to color change
