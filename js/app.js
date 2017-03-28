@@ -68,126 +68,20 @@ $(function(){
       console.log(clickedText1);
       console.log('#1: ' + clickedNumber1);
 
-
-
-
-      // // UNCLICK STEP
-      // if ($(this).hasClass('clicked-space')) {
-      //     $(this).removeClass('clicked-space')
-      //     $(this).addClass('unclicked-space')
-      //     $('.space').css({'border': ''})
-      //     console.log('removing clicked status');
-      //
-      // //CLICK STEP
-      // } else {
-      //   // $('.space').css({'border':''})
-      //   $(this).removeClass('unclicked-space');
-      //   $(this).addClass('clicked-space')
-      //   $(this).css({'border': 'rgba(255,255,255,1) solid 5px'})
-      //
-
-
-        // eventHandler.testingThis();
-
-        //used for dice game
-        // var $upperSelection = 'space-'+this.$upLocation;
-        // var $rightSelection = 'space-'+this.$rightLocation;
-        // var $downSelection = 'space-'+this.$downLocation;
-        // var $leftSelection = 'space-'+this.$leftLocation;
-
-        // console.log('I want to click these locations: ' + $upLocation + ', ' + $rightLocation + ', ' + $downLocation +', '+ $leftLocation);
-
-      // }
-
-
-      // var $upperCSS = $('#space-'+$upLocation).css({'border': 'rgba(255,255,255,.7) solid 4px'});
-      // var $rightCSS = $('#space-'+$rightLocation).css({'border': 'rgba(255,255,255,.7) solid 4px'});
-      // var $lowerCSS = $('#space-'+$downLocation).css({'border': 'rgba(255,255,255,.7) solid 4px'});
-      // var $leftCSS = $('#space-'+$leftLocation).css({'border': 'rgba(255,255,255,.7) solid 4px'});
-      // var $allSpaces = $('.space');
-
-      // // higlights nearby spaces.
-      // if ($thisLocation == 3) {
-      //   // console.log("this is the top right corner box");
-      //   $rightCSS.css({'border':'rgba(255,255,255,0'})
-      // } else if ($thisLocation === 4 || $thisLocation ===8) {
-      //   // console.log("left side");
-      //   $leftCSS.css({'border':'rgba(255,255,255,0'})
-      // } else if ($thisLocation === 7|| $thisLocation === 11){
-      //   // console.log("right side");
-      //   $rightCSS.css({'border':'rgba(255,255,255,0'})
-      // }else if ($thisLocation === 12) {
-      //   // console.log("bottom left");
-      //   $leftCSS.css({'border':'rgba(255,255,255,0'})
-      // }
-
-
-      // //used for dice
-      // $('#' + $upperSelection).on('click',function(){
-      //   // $('.space').css({'border':'rgba(255,255,255,0'})
-      //   $(this).addClass('selected-border')    // How do I get this to light up when I just told it to go dark.
-      //   var $thisText = $(this).text()
-      //   console.log("this text = " + $thisText);
-      //   // game.rollOfDice();
-      // });
-      // $('#' + $rightSelection).on('click',function(){
-      //   // $('.space').css({'border':'rgba(255,255,255,0'})
-      //   $(this).addClass('selected-border')    // How do I get this to light up when I just told it to go dark.
-      //   var $thisText = $(this).text()
-      //   console.log('this is location # ' + $rightSelection);
-      // });
-      // $('#' + $downSelection).on('click',function(){
-      //   // $('.space').css({'border':'rgba(255,255,255,0'})
-      //   $(this).addClass('selected-border')    // How do I get this to light up when I just told it to go dark.
-      //   var $thisText = $(this).text()
-      //   console.log('this is location # ' + $downSelection);
-      // });
-      // $('#' + $leftSelection).on('click',function(){
-      //   // $('.space').css({'border':'rgba(255,255,255,0'})
-      //   $(this).addClass('selected-border')    // How do I get this to light up when I just told it to go dark.
-      //   var $thisText = $(this).text()
-      //   console.log('this is location # ' + $leftSelection);
-      // });
-      //
-      //
-      //
-      //
-
-      // counter++,
-      // console.log("counter: " + counter);
     },
     $currentId : $(this).attr('id'),
-    // console.log($currentId);
-    // console.log($thisLocation);
-
-    // selectASpace:function(){
-    //   $('.space').css({'border':'rgba(255,255,255,0'})
-    // }
-
-
-    //select only the surrounding buttons
-    // if this location is selected ID, make up, right, down, left available for selection.
-    // if($)
-}
-  //What happens when the button is clickedSpace
-  // clickedButton:function(){
-  //   console.log("test the button");
-  // }
-
+  }
 //====================================================
 //                EVENT LISTENER
 //====================================================
 
 
 
-  $spaces.on('click', eventHandler.clickedSpace);
-
+$('.player1').on('click', eventHandler.clickedSpace);
   // $spaces.on('click', eventHandler.selectASpace)
-
 //if counter is 0, run first click,
 //else run second click
 //Turns the spaces into buttons
-
 //Turns the button Div into a button
 $button.on('click', eventHandler.clickedButton)
 
@@ -263,44 +157,76 @@ var game = {
       this.attackPhase();
     }
   },
+  claimLand: function(){
+    clickedText2 = Math.floor(clickedText1 /2);
+    console.log(clickedText2);
+    clickedText1 = clickedText1 - clickedText2;
+    console.log(clickedText1);
+    $('#space-'+clickedNumber2).addClass('player1');
+    $('#space-' + clickedNumber1).html('<h2>'+clickedText1+'</h2>');
+    $('#space-' + clickedNumber2).html('<h2>'+clickedText2+'</h2>');
+  },
+
   attackPhase: function(){
     //need to select a space, see the surrounding spaces,
 if (clickedText2 == 0) {
-  clickedText2 = Math.floor(clickedText1 /2);
-  console.log(clickedText2);
-  clickedText1 = clickedText1 - clickedText2;
-  console.log(clickedText1);
-  $('#space-'+clickedNumber2).addClass('player1');
-  $('#space-' + clickedNumber1).html('<h2>'+clickedText1+'</h2>');
-  $('#space-' + clickedNumber2).html('<h2>'+clickedText2+'</h2>');
-} else{
 
+  this.claimLand();
+
+} else{
+  console.log(clickedText2 + "this is the second clicked");
+game.rollOfDice()
 }  //compare dice to space.
-    this.hirePhase();
   },
   rollOfDice: function(){
-
-    console.log(Math.ceil(Math.random()*6));
-    //sum of x random numbers where x = of soldiers in space
+    var attackerTotal = 0;
+    var defenderTotal = 0;
+    var sixSidedDie = function(){
+      return Math.ceil(Math.random() * 6)
+    }
+    // var attackerRoll = function() {
+    for (var i = 0; i < parseInt(clickedText1); i++) {
+      attackerTotal = attackerTotal + sixSidedDie();
+      console.log('doing the attack roll');
+    }
+    console.log("attackerRoll " +parseInt(attackerTotal));
+    // }
+    // var defenderRoll = function(){
+      for (var i = 0; i < parseInt(clickedText2); i++) {
+        defenderTotal = defenderTotal + sixSidedDie();
+      // }
+    }
+    console.log('defendertotal ' + defenderTotal);
     //need the number of soldiers in each space.
+    if (attackerTotal > defenderTotal) {
+      game.claimLand();
+    }
+    console.log('end of attack phase');
+    $('.clicked-space').off('click')
+    $('.new-space').off('click')
+    game.hirePhase();
   },
   hirePhase: function(){
-  //   // Calculate the number of spaces currently owned.
-  //   console.log(this.currentPlayer.$numberOfControlledSpaces);
-  //   // make newsoldiers = spaces owned.
-  //   var newSoldiers = this.currentPlayer.$numberOfControlledSpaces;
-  //   console.log(newSoldiers);
-  //   while (newSoldiers > 0){// add a new soldier to clicked player's space
-      // if (/*selectedSpace*/.hasClass(this.currentPlayer){
-      //   /*selectedSpace*/++;
-      //   newSoldiers--;
-      // }
-  //   newSoldiers--;
-  // }
-  //   // when newSoldiers is 0, go to game.endOfRound
+    // Calculate the number of spaces currently owned.
+    console.log(this.currentPlayer.$numberOfControlledSpaces);
+    // make newsoldiers = spaces owned.
+    var newSoldiers = this.currentPlayer.$numberOfControlledSpaces;
+    console.log("new Soldiers = " + newSoldiers);
+    // while (newSoldiers > 0){// add a new soldier to clicked player's space
+    //   if ($(this).hasClass(this.currentPlayer)){
+    //     $(this)++;
+    //     newSoldiers--;
+    //   }
+    // }
+    // newSoldiers--;
+    // when newSoldiers is 0, go to game.endOfRound
   },
   endOfRound: function(){
     this.checkForWinner();
+
+    $('.new-space').removeClass('new-space');
+    $('.clicked-space').removeClass('clicked-space')
+
     if (this.currentPlayer === player1){
       this.currentPlayer = player2;
     } else {
