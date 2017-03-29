@@ -7,11 +7,11 @@ H1{
 }
 .map{
   padding-top: 15px;
-  background-color: darkblue;
+  background: maroon;
   position:relative;
   height: 700px;
   width: 700px;
-  border-radius: 5%;
+  border-radius: 5% 0 0 5%;
   display: flex;
   justify-content: space-around;
   flex-direction: row;
@@ -46,9 +46,6 @@ H1{
   overflow: hidden;
   box-sizing: border-box;
 }
-.new-space{
-  border: rgba(255,255,255,.7) solid 4px;
-}
 .player1{
   background-color: blue;
 }
@@ -60,8 +57,8 @@ H1{
   height: 25px;
   width: 200px;
   background-color: Azure;
-  border-radius: 10px 10px 10px 10px;
-  border:5px darkblue solid;
+  border-radius: 5%;
+  border:3px black solid;
   text-align: center;
   padding: 50px 15px;
   margin: 0 auto;
@@ -70,13 +67,14 @@ H1{
   box-shadow: inset 0 0 18px 1px black;
 }
 .unclicked-space{
-  border: ;
+  /*border: ;*/
 }
 .clicked-space{
-  border: rgba(255,255,255,1) solid 5px;
+  box-shadow: inset 0 0 18px 1px black;
+  /*border: rgba(255,255,255,1) solid 5px;*/
 }
 .selected-border{
-  border:rgba(255,0,0,1)}
+  border:rgba(255,0,0,1);
 }
 
 .new-space{
@@ -84,22 +82,24 @@ H1{
 }
 
 .turns{
-  height: 25px;
+  /*height: 25px;*/
   width: 200px;
   background-color: Azure;
   border-radius: 0 10px 10px 0;
-  border:5px darkblue solid;
+  border:3px black solid;
   text-align: center;
-  padding: 50px 15px;
+  padding: 10px 15px;
   margin: 0 auto;
   cursor: pointer;
+  /*border: 3px black;*/
 }
 
 .side-bar{
+  border: 3px solid black;
   display: flex;
-  height: auto;
-  background-color: darkblue;
-  margin: 155px 0 75px 0;
+  height: 715px;
+  background-color: maroon;
+  margin: 79px 0 0 0;
   border-radius: 0 10px 10px 0;
   flex-direction: column;
   justify-content:flex-start;
@@ -111,7 +111,7 @@ H1{
   width: 200px;
   background-color: Azure;
   border-radius: 0 10px 10px 0;
-  border:5px darkblue solid;
+  border:3px black solid;
   text-align: center;
   padding: 10px 15px;
   margin: 0 auto;
@@ -120,13 +120,13 @@ H1{
 
 .rules{
   width: 200px;
-  height: 235px;
+  height: 372px;
   background-color: Azure;
   border-radius: 0 10px 10px 0;
-  border:5px darkblue solid;
+  border:2px black solid;
   text-align: center;
-  padding: 10px 15px;
-  /*margin: 0 auto;*/
+  padding: 1px 15px;
+  margin: 0 auto;
   cursor: pointer;
 }
 

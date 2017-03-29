@@ -72,15 +72,18 @@ var testing = function(){
   var $player1Score = $('.player1').length;
   var $player2Score = $('.player2').length;
   $('.scores').html('<p>Player 1\'s points: ' + $player1Score + '</p> <p>Player 2\'s points: ' + $player2Score + '</p>');
+  $('.rules').html('<h3>Attack Phase</h3><p>By selecting any of your spaces that have at least 2 points in it, you can attack any space touching yours horizontally or vertically. Repeat until you have no more possible moves.  When done, press \'End Phase\' to continue.</p>');
+
+  // $('.phase').text('Attack Phase');
   if (toggle === true) {
     game.currentPlayer = 'player1';
     otherPlayer = 'player2';
-    $('.turns').text('Player 1\s turn');
+    $('.turns').html('<p>Player 1\'s turn</p><p class="phase">Attacking Phase</p>').css({'box-shadow':'inset 0 0 0 10px blue'});
     console.log(game.currentPlayer);
   }else{
     game.currentPlayer = 'player2';
     otherPlayer = 'player1';
-    $('.turns').text('Player 2\s turn');
+    $('.turns').html('<p>Player 2\'s turn</p><p class="phase"><p>Attacking Phase</p>').addClass('player2').css({'box-shadow':'inset 0 0 0 10px purple'});
     console.log(game.currentPlayer);
   }
   $('.'+game.currentPlayer).on('click', eventHandler.clickedSpace);
@@ -280,9 +283,15 @@ resetting: function(){
 
 
   hirePhase: function(){
+
+    $('.phase').text('Rebuild Phase');
+    var curentPlayerClass = '.' + game.currentPlayer;
+    console.log('.' + game.currentPlayer);
+    // $('.' + game.currentPlayer).addClass('new-space');
     console.log(game.currentPlayer + " HERE!!!!!!!!!!!!!!!!!!!!!!!");
     // Calculate the number of spaces currently owned.
     if (game.currentPlayer === 'player1') {
+      $(curentPlayerClass).addClass('new-space');
       player1.$numberOfControlledSpaces = $('.' + game.currentPlayer).length;
      newSoldiers = player1.$numberOfControlledSpaces;
       console.log('player1 gets to hire now');
@@ -294,7 +303,7 @@ resetting: function(){
     console.log("new Soldiers = " + newSoldiers);
 
     var $currentPlayer = $('.'+ game.currentPlayer);
-    $('.new-space').removeClass('new-space');
+    // $('.new-space').removeClass('new-space');
     $('.clicked-space').removeClass('clicked-space');
     $('.space').off('click');
     $('.button').off('click');
