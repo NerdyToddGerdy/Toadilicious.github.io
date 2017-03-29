@@ -78,12 +78,12 @@ var testing = function(){
   if (toggle === true) {
     game.currentPlayer = 'player1';
     otherPlayer = 'player2';
-    $('.turns').html('<p>Player 1\'s turn</p><p class="phase">Attacking Phase</p>').css({'box-shadow':'inset 0 0 0 10px blue'});
+    $('.turns').html('<p>Player 1\'s turn</p><p class="phase">Attacking Phase</p>').css({'box-shadow':'inset 0 0 0 10px slategrey'});
     console.log(game.currentPlayer);
   }else{
     game.currentPlayer = 'player2';
     otherPlayer = 'player1';
-    $('.turns').html('<p>Player 2\'s turn</p><p class="phase"><p>Attacking Phase</p>').addClass('player2').css({'box-shadow':'inset 0 0 0 10px purple'});
+    $('.turns').html('<p>Player 2\'s turn</p><p class="phase"><p>Attacking Phase</p>').addClass('player2').css({'box-shadow':'inset 0 0 0 10px darkgoldenrod'});
     console.log(game.currentPlayer);
   }
   $('.'+game.currentPlayer).on('click', eventHandler.clickedSpace);
@@ -290,8 +290,9 @@ resetting: function(){
     // $('.' + game.currentPlayer).addClass('new-space');
     console.log(game.currentPlayer + " HERE!!!!!!!!!!!!!!!!!!!!!!!");
     // Calculate the number of spaces currently owned.
+    $(curentPlayerClass).addClass('new-space');
+    $('.rules').html('<h3>Rebuild Phase</h3><p>You gain 1 new soldier per space that you own. Add these soldiers to any of your spaces. </p>');
     if (game.currentPlayer === 'player1') {
-      $(curentPlayerClass).addClass('new-space');
       player1.$numberOfControlledSpaces = $('.' + game.currentPlayer).length;
      newSoldiers = player1.$numberOfControlledSpaces;
       console.log('player1 gets to hire now');
