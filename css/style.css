@@ -16,13 +16,15 @@ H1{
   justify-content: space-around;
   flex-direction: row;
   flex-wrap: wrap;
-  margin:auto;
+  margin:40px 0 40px 0;
   overflow: hidden;
 }
 .container {
-  display: flex-inline;
-  justify-content: center;
+  margin:auto;
+  display: flex;
+  justify-content:center;
   flex-direction: column;
+  flex-wrap:wrap;
   width: 900px;
   height: 900px;
 
@@ -56,13 +58,16 @@ H1{
 
 .button {
   height: 25px;
-  width: 100px;
+  width: 200px;
   background-color: Azure;
-  border-radius: 10px;
+  border-radius: 10px 10px 10px 10px;
+  border:5px darkblue solid;
   text-align: center;
-  padding: auto;
-  margin: auto;
+  padding: 50px 15px;
+  margin: 0 auto;
   cursor: pointer;
+  background-color: #dfdac0;
+  box-shadow: inset 0 0 18px 1px black;
 }
 .unclicked-space{
   border: ;
@@ -73,12 +78,56 @@ H1{
 .selected-border{
   border:rgba(255,0,0,1)}
 }
+
 .new-space{
   border: rgba(255,255,255,.7) solid 4px;
 }
 
+.turns{
+  height: 25px;
+  width: 200px;
+  background-color: Azure;
+  border-radius: 0 10px 10px 0;
+  border:5px darkblue solid;
+  text-align: center;
+  padding: 50px 15px;
+  margin: 0 auto;
+  cursor: pointer;
+}
 
+.side-bar{
+  display: flex;
+  height: auto;
+  background-color: darkblue;
+  margin: 155px 0 75px 0;
+  border-radius: 0 10px 10px 0;
+  flex-direction: column;
+  justify-content:flex-start;
 
+}
 
+.scores{
+  /*height: 25px;*/
+  width: 200px;
+  background-color: Azure;
+  border-radius: 0 10px 10px 0;
+  border:5px darkblue solid;
+  text-align: center;
+  padding: 10px 15px;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.rules{
+  width: 200px;
+  height: 235px;
+  background-color: Azure;
+  border-radius: 0 10px 10px 0;
+  border:5px darkblue solid;
+  text-align: center;
+  padding: 10px 15px;
+  /*margin: 0 auto;*/
+  cursor: pointer;
+}
 
 /**/
