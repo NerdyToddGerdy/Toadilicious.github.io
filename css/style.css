@@ -60,6 +60,7 @@ H1{
   background-color: Azure;
   border-radius: 10px;
   text-align: center;
+  padding: auto;
   margin: auto;
   cursor: pointer;
 }

@@ -67,7 +67,7 @@ test = eventHandler.clickedSpace;
 //====================================================
 
 var testing = function(){
-  if (toggle = true) {
+  if (toggle === true) {
     game.currentPlayer = 'player1'
     console.log(game.currentPlayer);
   }else{
@@ -84,7 +84,7 @@ var testing = function(){
 $button.on('click', eventHandler.clickedButton)
 
 begin = testing;
-
+clickedSpace = eventHandler.clickedSpace;
 testing()
 }); //End of Window onload**************************
 
@@ -100,6 +100,7 @@ testing()
 //====================================================
 
 /////////////Objects
+var clickedSpace;
 var clickedNumber1 = -1
 var clickedNumber2 = -1
 var clickedText1 = '';
@@ -130,7 +131,7 @@ var player1 = {
 var player2 = {
   name:'',
   playerColor:'',
-  $numberOfControlledSpaces:$(('.player2').length),
+  $numberOfControlledSpaces:$('.player2').length,
   numberOfSoldiers:2,
   currnetlyContolledSpaces:[]
 };
@@ -164,11 +165,12 @@ var game = {
 
 resetting: function(){
   $('.space').removeClass('clicked-space').removeClass('new-space')
-  console.log('classRemoved');
+  console.log('clicked-space and new-space classRemoved');
   $('.space').off()
-  $('.space').on('click',test);///////////////////////////////////////////////////////////////////
+  // $('.space').on('click',test);///////////////////////////////////////////////////////////////////
   clickedNumber1 = '';
   clickedNumber2 = '';
+  $('.' + game.currentPlayer).on('click',clickedSpace)
 },
 
 
@@ -185,7 +187,7 @@ resetting: function(){
     console.log('end of attack phase');
     $('.clicked-space').off('click')
     $('.new-space').off('click')
-    game.resetting()
+    console.log('claimLand>>>resetting');
   },
 
 
@@ -197,7 +199,9 @@ resetting: function(){
       console.log(clickedText2 + "this is the second clicked");
       game.rollOfDice()
     }
+    $('.button').off()
     $('.button').on('click', game.hirePhase)
+    game.resetting()
   },
 
 
@@ -213,15 +217,17 @@ resetting: function(){
       attackerTotal = attackerTotal + sixSidedDie();
       console.log('doing the attack roll');
     }
-    console.log("attackerRoll " +parseInt(attackerTotal));
+    console.log("Attacker Roll " +parseInt(attackerTotal));
       for (var i = 0; i < parseInt(clickedText2); i++) {
         defenderTotal = defenderTotal + sixSidedDie();
     }
-    console.log('defendertotal ' + defenderTotal);
+    console.log('Defender Roll ' + defenderTotal);
     if (attackerTotal > defenderTotal) {
       console.log('Attacker Wins');
     game.claimLand();
-    }
+  }else {
+
+  }
     console.log('defender wins');
   },////Running to my specifications!!!
 
@@ -239,10 +245,12 @@ resetting: function(){
 
       console.log(clickedText1);
       console.log('#1: ' + clickedNumber1);
-    if (toggle = true) {
+    if (toggle === true) {
       toggle = false;
+      console.log('true >> false');
     } else {
       toggle = true;
+      console.log('false >> true');
     }
     console.log("Toggle = " + toggle);
       begin();
@@ -253,13 +261,14 @@ resetting: function(){
   hirePhase: function(){
     console.log(game.currentPlayer + " HERE!!!!!!!!!!!!!!!!!!!!!!!");
     // Calculate the number of spaces currently owned.
-    player1.$numberOfControlledSpaces = $('.' + game.currentPlayer).length;
     if (game.currentPlayer === 'player1') {
+      player1.$numberOfControlledSpaces = $('.' + game.currentPlayer).length;
      newSoldiers = player1.$numberOfControlledSpaces;
-      console.log('player1');
+      console.log('player1 gets to hire now');
     } else {
+      player2.$numberOfControlledSpaces = $('.' + game.currentPlayer).length;
      newSoldiers = player2.$numberOfControlledSpaces;
-      console.log('player2');
+      console.log('player2 gets to hire now');
     }
     console.log("new Soldiers = " + newSoldiers);
 
