@@ -27,23 +27,9 @@ $(function(){
   var eventHandler = {
     $currentClass : $(this).attr('class'),
     // console.log("check the class: " + $currentClass);
-
-    //What happens when space is clicked on attack phase
-    testingThis: function() {
-
-      // console.log($(this).attr('class') + ' also');
-    },
     resetSpace: function(){
       console.log('HERE BE DRAGONS!!!');
       game.resetting()
-    //   var resetting = function(){
-    //   $('.space').removeClass('clicked-space').removeClass('new-space')
-    //   console.log('classRemoved');
-    //   $('.space').off()
-    //   $('.space').on('click',eventHandler.clickedSpace);
-    //   clickedNumber1 = -1;
-    //   clickedNumber2 = -1;
-    // }
     },
     newSpace: function(){
       console.log("testing newSpace");
@@ -54,11 +40,12 @@ $(function(){
       game.attackPhase();
     },
     clickedSpace : function(){
+      //more to come.
       var $thisLocation = $(this).index();
-      var $upLocation = $thisLocation-4;
-      var $rightLocation = $thisLocation+1;
-      var $downLocation = $thisLocation+4;
-      var $leftLocation = $thisLocation-1;
+      // var $upLocation = $thisLocation-4;
+      // var $rightLocation = $thisLocation+1;
+      // var $downLocation = $thisLocation+4;
+      // var $leftLocation = $thisLocation-1;
 
       $(this).addClass('clicked-space')
       // console.log('classAdded');
@@ -80,7 +67,14 @@ test = eventHandler.clickedSpace;
 //====================================================
 
 var testing = function(){
-  $('.player1').on('click', eventHandler.clickedSpace);
+  if (toggle = true) {
+    game.currentPlayer = 'player1'
+    console.log(game.currentPlayer);
+  }else{
+    game.currentPlayer = 'player2'
+    console.log(game.currentPlayer);
+  }
+  $('.'+game.currentPlayer).on('click', eventHandler.clickedSpace);
 }
   // $spaces.on('click', eventHandler.selectASpace)
 //if counter is 0, run first click,
@@ -113,7 +107,8 @@ var clickedText2 = '';
 var newSoldiers = 0
 var test
 var testing;
-var begin
+var begin;
+var toggle = true;
 ////Player 1
 //Name
 //Color
@@ -151,11 +146,8 @@ var game = {
   // currentPlayerString:
   gameRound:0,
   currentPhase:'Attaack',
-  // startOfGame: function(){
-  //   player1.name: prompt('What is player 1\'s name?')
-  //
-  //   this.attackPhase();
-  // },
+
+
   checkForWinner: function(){
     console.log('CHECKING FOR WINNER');
     //if all boxes are one color or the other.
@@ -170,7 +162,6 @@ var game = {
   },
 
 
-
 resetting: function(){
   $('.space').removeClass('clicked-space').removeClass('new-space')
   console.log('classRemoved');
@@ -179,7 +170,6 @@ resetting: function(){
   clickedNumber1 = '';
   clickedNumber2 = '';
 },
-
 
 
   claimLand: function(){
@@ -199,22 +189,16 @@ resetting: function(){
   },
 
 
-
   attackPhase: function(){
     console.log('Starting Attack Phase');
-    //need to select a space, see the surrounding spaces,
-    // $('.button').off('click',game.endOfRound)
-    $('.button').on('click', game.hirePhase)
     if (clickedText2 == 0) {
       this.claimLand();
     } else{
       console.log(clickedText2 + "this is the second clicked");
       game.rollOfDice()
     }
+    $('.button').on('click', game.hirePhase)
   },
-
-
-
 
 
   rollOfDice: function(){
@@ -239,8 +223,6 @@ resetting: function(){
     game.claimLand();
     }
     console.log('defender wins');
-    // game.hirePhase();
-    // $('.button').on('click',game.hirePhase)
   },////Running to my specifications!!!
 
 
@@ -250,53 +232,35 @@ resetting: function(){
 
 
   endOfRound: function(){
-    console.log('END OF ROUND');
+    console.log('END OF ROUND  >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
     game.checkForWinner();
     $('.new-space').removeClass('new-space');
     $('.clicked-space').removeClass('clicked-space');
 
-    if (game.currentPlayer === 'player1'){
-      game.currentPlayer = 'player2';
-      console.log('currentPlayer: ' + game.currentPlayer);
-      console.log('Player 2\'s turn');
-      return player2;
-    } else /*if (game.currentPlayer === 'player2')*/{
-      game.currentPlayer = 'player1';
-      console.log('Player 1\'s turn');
-    }
-    // console.log('currentPlayer: ' + game.currentPlayer);
-    // testing();
-    //
-    // //ADD THE EVENT HANDLER BACK ON EVEN THOUGH IT HASN'T BEEN RUN YET?
-    // $('.' + game.currentPlayer).on('click',function(){
-    //   $(this).addClass('clicked-space')
-    //   // console.log('classAdded');
-    //   $('.space').off();
-    //   $(this).on('click', function(){
-    //     game.resetting()
-    //   })
       console.log(clickedText1);
       console.log('#1: ' + clickedNumber1);
-    // })
-  begin()
+    if (toggle = true) {
+      toggle = false;
+    } else {
+      toggle = true;
+    }
+    console.log("Toggle = " + toggle);
+      begin();
   },
 
 
 
   hirePhase: function(){
+    console.log(game.currentPlayer + " HERE!!!!!!!!!!!!!!!!!!!!!!!");
     // Calculate the number of spaces currently owned.
-    // console.log(this.currentPlayer.$numberOfControlledSpaces);
-    // make newsoldiers = spaces owned.
+    player1.$numberOfControlledSpaces = $('.' + game.currentPlayer).length;
     if (game.currentPlayer === 'player1') {
-     newSoldiers = player1.$numberOfControlledSpaces+1;
+     newSoldiers = player1.$numberOfControlledSpaces;
       console.log('player1');
     } else {
-     newSoldiers = player2.$numberOfControlledSpaces+1;
+     newSoldiers = player2.$numberOfControlledSpaces;
       console.log('player2');
     }
-    // console.log("current Player # "+(this.currentPlayer));
-    // var newSoldiers = this.currentPlayer.$numberOfControlledSpaces;
-    // console.log(this.currentPlayer);
     console.log("new Soldiers = " + newSoldiers);
 
     var $currentPlayer = $('.'+ game.currentPlayer)
@@ -304,22 +268,20 @@ resetting: function(){
     $('.clicked-space').removeClass('clicked-space');
     $('.space').off('click')
     $('.button').off('click')
-    // while (newSoldiers > 0) {
     console.log(game.currentPlayer + " IS HIRING");
-      $currentPlayer.on('click',function(){
-        if(newSoldiers>0){
-          $(this).html('<h2>' + (parseInt($(this).text())+1) + '</h2>')
-          newSoldiers--;
-          console.log("new Soldiers = " + newSoldiers);
-        }
-        $('.button').on('click', game.endOfRound)
-      })
+    $currentPlayer.on('click',function(){
+      if(newSoldiers>0){
+        $(this).html('<h2>' + (parseInt($(this).text())+1) + '</h2>')
+        newSoldiers--;
+        console.log("new Soldiers = " + newSoldiers);
+      }
+    })
+    console.log("END OF HIRING");
+    $('.button').on('click', game.endOfRound)
 
   },
 
 }
-////Map
-// How to color change
 
 
 
