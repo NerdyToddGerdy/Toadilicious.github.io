@@ -5,9 +5,10 @@ body{
 H1{
   text-align: center;
   color: slategrey;
+  margin-bottom: 0;
 }
 img{
-  width: 50px;
+  width: 79px;
 }
 .map{
   padding-top: 15px;
@@ -20,7 +21,7 @@ img{
   justify-content: space-around;
   flex-direction: row;
   flex-wrap: wrap;
-  margin:40px 0 40px 0;
+  margin:10px 0 40px 0;
   overflow: hidden;
 }
 .container {
@@ -51,7 +52,7 @@ img{
   background-color: slategrey;
 }
 .player2{
-  background-color: darkgoldenrod;
+  background-color: #673131;
 }
 
 .button {
@@ -100,7 +101,7 @@ img{
   display: flex;
   height: 715px;
   /*background-color: darkslateblue;*/
-  margin: 79px 0 0 0;
+  margin: 55px 0 0 0;
   border-radius:  10px 10px;
   flex-direction: column;
   justify-content:flex-start;
