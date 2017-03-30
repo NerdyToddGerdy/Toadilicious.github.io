@@ -6,6 +6,9 @@ H1{
   text-align: center;
   color: slategrey;
 }
+img{
+  width: 50px;
+}
 .map{
   padding-top: 15px;
   background: darkslateblue;
