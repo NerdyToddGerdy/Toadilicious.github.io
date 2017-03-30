@@ -144,7 +144,7 @@ $(function(){
     }else{
       game.currentPlayer = 'player2';
       otherPlayer = 'player1';
-      $('.turns').html('<p>Player 2\'s turn</p><p class="phase"><p>Attacking Phase</p>').css({'box-shadow':'inset 0 0 0 10px darkgoldenrod'});
+      $('.turns').html('<p>Player 2\'s turn</p><p class="phase"><p>Attacking Phase</p>').css({'box-shadow':'inset 0 0 0 10px #673131'});
       console.log(game.currentPlayer);
     }
     $('.'+game.currentPlayer).on('click', eventHandler.clickedSpace);
