@@ -107,6 +107,11 @@ img{
 
 }
 
+.button:active{
+  background-color: darkgoldenrod;
+  transform: translate(4px,4px);
+}
+
 .scores{
   /*height: 25px;*/
   width: 200px;
