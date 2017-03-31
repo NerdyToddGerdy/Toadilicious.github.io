@@ -1,19 +1,12 @@
- technologies used, the approach taken, a link to your live site, installation instructions, unsolved problems,
-
-Shows off all features of the app
-Explains the technical details
-Explains the technical challenges
-Explains which improvements you might make
-
 # Island Pillaging
 ## Brief description
 My game is a land grabbing game with a pirate theme.  The objective is to grab islands before the other player does.  As the board starts to fill up you will be fighting the other player by attacking their spaces as well.  I based it off a game I used to play on my iPad called 'Strategery'. (https://itunes.apple.com/us/app/strategery/id298908505?mt=8)
 ## technologies used
-HTML5
-CSS3
-Javascript
-jQuery
-Git
+- HTML5
+- CSS3
+- Javascript
+- jQuery
+- Git
 
 I attempted to use sweetalert2.js .
 
