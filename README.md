@@ -17,7 +17,6 @@ There are currently none
 
 ## unsolved problems
 - During the attacking Phase, if you press a space that only has one unit in it, the alert comes on and then you have to unclick the box still as opposed to the element to automatically going back to where it was.
-- In the instruction pane, when adding units, the unit number does not count down.
 - If you don't attack on your turn, you do not get a rebuild phase? needed to make sure that if you only have cells with 1 player, you can still win.
 
 
