@@ -26,11 +26,11 @@ $(function(){
   //====================================================
 
   var eventHandler = {
-    resetSpace: function(){
+    resetSpace() {
       console.log('HERE BE DRAGONS!!!');
       game.resetting();
     },
-    newSpace: function(){
+    newSpace() {
       console.log('BEGINNING OF NEWSPACE<><><><><><><><><><><><>');
       $(this).addClass('new-space');
       clickedNumber2 = $(this).index();
@@ -55,7 +55,7 @@ $(function(){
     //   }
     //   eventHandler.clickedSpace();
     // },
-    clickedSpace : function(){
+    clickedSpace() {
       console.log('BEGINNING OF CLICKEDSPACE<><><><><><><><><><><><>');
 
 
